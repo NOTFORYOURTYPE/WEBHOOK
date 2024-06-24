@@ -1,4 +1,4 @@
-local SendAltLog = function(Link, D)
+local SendLog = function(Link, D)
 	local Link = getgenv().DiscordWebhook
 
 	if (Link ~= "") then 
@@ -49,4 +49,4 @@ local SendAltLog = function(Link, D)
 		end
 	end
 end
-return SendAltLog
+return SendLog
