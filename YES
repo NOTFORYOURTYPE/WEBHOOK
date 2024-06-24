@@ -17,32 +17,32 @@ local SendLog = function(Link, D)
                     {
                         ["name"] = ":link: Profile Link",
                         ["value"] = "[Profile](https://www.roblox.com/users/"..tostring(D[2]).."/profile)",
-                        ["inline"] = false
+                        ["inline"] = true
                     },
                     {
                         ["name"] = ":bust_in_silhouette: Username",
                         ["value"] = D[1],
-                        ["inline"] = false
+                        ["inline"] = true
                     },
                     {
                         ["name"] = ":identification_card: UserID",
                         ["value"] = tostring(D[2]),
-                        ["inline"] = false
+                        ["inline"] = true
                     },
                     {
                         ["name"] = ":moneybag: Wallet",
                         ["value"] = D[3],
-                        ["inline"] = false
+                        ["inline"] = true
                     },
                     {
                         ["name"] = ":moneybag: Earned",
                         ["value"] = earnedValue,
-                        ["inline"] = false
+                        ["inline"] = true
                     },
                     {
                         ["name"] = ":alarm_clock: TIME ELAPSED",
                         ["value"] = D[5],
-                        ["inline"] = false
+                        ["inline"] = true
                     },
                 },
                 ["image"] = {
