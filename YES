@@ -1,52 +1,59 @@
 local SendLog = function(Link, D)
-	local Link = getgenv().DiscordWebhook
+    local Link = getgenv().DiscordWebhook
 
-	if (Link ~= "") then 
-		-- warn("sending webhook")
+    if (Link ~= "") then 
+        -- warn("sending webhook")
 
-		local Data =
-			{
-				["content"] = "",
-				["embeds"] = {{
-					["title"] = "Shalev AutoFarm",
-					["description"] = "**"..D[1].."**"),
-					["color"] = tonumber(0x237a00),
-					["fields"] = {
-						{
-							["name"] = ":link: Profile Link",
-							["value"] = "[Profile](https://www.roblox.com/users/"..tostring(D[2].."/profile",
-							["inline"] = false
-						},
-						{
-							["name"] = ":identification_card: USERID",
-							["value"] = tostring(D[2],
-							["inline"] = false
-						},
-						{
-							["name"] = ":moneybag: Wallet",
-							["value"] = D[3],
-							["inline"] = false
-						},
-						{
-							["name"] = ":moneybag: Earned",
-							["value"] = D[4],
-							["inline"] = false
-						},
-						{
-							["name"] = ":alarm_clock: TIME ELAPSED",
-							["value"] = D[5],
-							["inline"] = false
-						},
-					},
-				}}
-			}
-		local s,e = pcall(function()
-			local http_request = http_request or syn and syn.request
-			http_request({Url=Link, Body=game:GetService("HttpService"):JSONEncode(Data), Method = "POST", Headers={["content-type"] = "application/json"}})
-		end)
-		if (e) then 
-			warn("error please contant support | Error Code: 555")
-		end
-	end
+        local Data = {
+            ["content"] = "",
+            ["embeds"] = {{
+                ["title"] = "Shalev AutoFarm",
+                ["description"] = "**"..D[1].."**",
+                ["color"] = tonumber(0x237a00),
+                ["fields"] = {
+                    {
+                        ["name"] = ":link: Profile Link",
+                        ["value"] = "[Profile](https://www.roblox.com/users/"..tostring(D[2]).."/profile)",
+                        ["inline"] = false
+                    },
+                    {
+                        ["name"] = ":identification_card: USERID",
+                        ["value"] = tostring(D[2]),
+                        ["inline"] = false
+                    },
+                    {
+                        ["name"] = ":moneybag: Wallet",
+                        ["value"] = D[3],
+                        ["inline"] = false
+                    },
+                    {
+                        ["name"] = ":moneybag: Earned",
+                        ["value"] = D[4],
+                        ["inline"] = false
+                    },
+                    {
+                        ["name"] = ":alarm_clock: TIME ELAPSED",
+                        ["value"] = D[5],
+                        ["inline"] = false
+                    },
+                },
+            }}
+        }
+        
+        local s, e = pcall(function()
+            local http_request = http_request or (syn and syn.request)
+            http_request({
+                Url = Link,
+                Body = game:GetService("HttpService"):JSONEncode(Data),
+                Method = "POST",
+                Headers = {["content-type"] = "application/json"}
+            })
+        end)
+
+        if not s then
+            warn("Error sending log: "..tostring(e))
+        end
+    end
 end
+
 return SendLog
