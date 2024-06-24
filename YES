@@ -40,7 +40,7 @@ local SendLog = function(Link, D)
                         ["inline"] = true
                     },
                     {
-                        ["name"] = ":alarm_clock: TIME ELAPSED",
+                        ["name"] = ":alarm_clock: Timer",
                         ["value"] = D[5],
                         ["inline"] = true
                     },
