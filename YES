@@ -4,6 +4,9 @@ local SendLog = function(Link, D)
     if (Link ~= "") then 
         -- warn("sending webhook")
 
+        -- Remove the "Earned: " prefix from D[4]
+        local earnedValue = tostring(D[4]):gsub("Earned: ", "")
+
         local Data = {
             ["content"] = "",
             ["embeds"] = {{
@@ -28,7 +31,7 @@ local SendLog = function(Link, D)
                     },
                     {
                         ["name"] = ":moneybag: Earned",
-                        ["value"] = D[4],
+                        ["value"] = earnedValue,
                         ["inline"] = false
                     },
                     {
@@ -38,7 +41,7 @@ local SendLog = function(Link, D)
                     },
                 },
                 ["image"] = {
-                    ["url"] = "https://i.imgur.com/qvPpwqT.png"
+                    ["url"] = "https://i.imgur.com/nXGxQ8N.gif"
                 },
                 ["thumbnail"] = {
                     ["url"] = "https://i.imgur.com/aLQCMew.png"
