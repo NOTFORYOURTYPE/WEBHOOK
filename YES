@@ -1,5 +1,5 @@
 local SendAltLog = function(Link, D)
-	local Link = _G.AutofarmSettings.Webhook 
+	local Link = getgenv().DiscordWebhook
 
 	if (Link ~= "") then 
 		-- warn("sending webhook")
