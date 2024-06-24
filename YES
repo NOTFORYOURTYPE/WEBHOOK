@@ -1,74 +1,52 @@
-local HttpService = game:GetService("HttpService")
-
-local GetProfileImageUrl = function(userId)
-    local url = "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. tostring(userId) .. "&size=420x420&format=Png&isCircular=false"
-    local response = HttpService:GetAsync(url)
-    local data = HttpService:JSONDecode(response)
-    if data and data.data and data.data[1] and data.data[1].imageUrl then
-        return data.data[1].imageUrl
-    else
-        return nil
-    end
-end
-
 local SendAltLog = function(Link, D)
-    local Link = getgenv().DiscordWebhook
+	local Link = _G.AutofarmSettings.Webhook 
 
-    if (Link ~= "") then 
-        -- warn("Sending webhook")
+	if (Link ~= "") then 
+		-- warn("sending webhook")
 
-        local profileImageUrl = GetProfileImageUrl(D[2])
-
-        local Data =
-            {
-                ["content"] = "",
-                ["embeds"] = {{
-                    ["title"] = "Shalev AutoFarm",
-                    ["description"] = "**"..D[1].."**",
-                    ["color"] = tonumber(0x237a00),
-                    ["fields"] = {
-                        {
-                            ["name"] = ":link: Profile Link",
-                            ["value"] = "[Profile](https://www.roblox.com/users/"..tostring(D[2]).."/profile)",
-                            ["inline"] = false
-                        },
-                        {
-                            ["name"] = ":identification_card: USERID",
-                            ["value"] = tostring(D[2]),
-                            ["inline"] = false
-                        },
-                        {
-                            ["name"] = ":moneybag: Wallet",
-                            ["value"] = D[3],
-                            ["inline"] = false
-                        },
-                        {
-                            ["name"] = ":moneybag: Earned",
-                            ["value"] = D[4],
-                            ["inline"] = false
-                        },
-                        {
-                            ["name"] = ":alarm_clock: TIME ELAPSED",
-                            ["value"] = D[5],
-                            ["inline"] = false
-                        },
-                    },
-                    ["image"] = {
-                        ["url"] = "https://i.imgur.com/qvPpwqT.png"
-                    },
-                    ["thumbnail"] = {
-                        ["url"] = profileImageUrl
-                    }
-                }}
-            }
-        local s, e = pcall(function()
-            local http_request = http_request or syn and syn.request
-            http_request({Url = Link, Body = HttpService:JSONEncode(Data), Method = "POST", Headers = {["content-type"] = "application/json"}})
-        end)
-        if (e) then 
-            warn("error please contact support | Error Code: 555")
-        end
-    end
+		local Data =
+			{
+				["content"] = "",
+				["embeds"] = {{
+					["title"] = "Shalev AutoFarm",
+					["description"] = "**"..D[1].."**"),
+					["color"] = tonumber(0x237a00),
+					["fields"] = {
+						{
+							["name"] = ":link: Profile Link",
+							["value"] = "[Profile](https://www.roblox.com/users/"..tostring(D[2].."/profile",
+							["inline"] = false
+						},
+						{
+							["name"] = ":identification_card: USERID",
+							["value"] = tostring(D[2],
+							["inline"] = false
+						},
+						{
+							["name"] = ":moneybag: Wallet",
+							["value"] = D[3],
+							["inline"] = false
+						},
+						{
+							["name"] = ":moneybag: Earned",
+							["value"] = D[4],
+							["inline"] = false
+						},
+						{
+							["name"] = ":alarm_clock: TIME ELAPSED",
+							["value"] = D[5],
+							["inline"] = false
+						},
+					},
+				}}
+			}
+		local s,e = pcall(function()
+			local http_request = http_request or syn and syn.request
+			http_request({Url=Link, Body=game:GetService("HttpService"):JSONEncode(Data), Method = "POST", Headers={["content-type"] = "application/json"}})
+		end)
+		if (e) then 
+			warn("error please contant support | Error Code: 555")
+		end
+	end
 end
-
 return SendAltLog
