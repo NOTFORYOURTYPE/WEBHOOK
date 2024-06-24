@@ -37,6 +37,12 @@ local SendLog = function(Link, D)
                         ["inline"] = false
                     },
                 },
+                ["image"] = {
+                    ["url"] = "https://i.imgur.com/qvPpwqT.png"
+                },
+                ["thumbnail"] = {
+                    ["url"] = "https://i.imgur.com/aLQCMew.png"
+                },
             }}
         }
         
