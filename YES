@@ -12,7 +12,7 @@ local SendLog = function(Link, D)
             ["embeds"] = {{
                 ["title"] = "Shalev AutoFarm",
                 ["description"] = "",
-                ["color"] = tonumber(0x237a00),
+                ["color"] = tonumber(0x47d115),
                 ["fields"] = {
                     {
                         ["name"] = ":link: Profile Link",
