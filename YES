@@ -11,7 +11,7 @@ local SendLog = function(Link, D)
             ["content"] = "",
             ["embeds"] = {{
                 ["title"] = "Shalev AutoFarm",
-                ["description"] = "**"..D[1].."**",
+                ["description"] = "",
                 ["color"] = tonumber(0x237a00),
                 ["fields"] = {
                     {
@@ -20,7 +20,12 @@ local SendLog = function(Link, D)
                         ["inline"] = false
                     },
                     {
-                        ["name"] = ":identification_card: USERID",
+                        ["name"] = ":bust_in_silhouette: Username",
+                        ["value"] = D[1],
+                        ["inline"] = false
+                    },
+                    {
+                        ["name"] = ":identification_card: UserID",
                         ["value"] = tostring(D[2]),
                         ["inline"] = false
                     },
