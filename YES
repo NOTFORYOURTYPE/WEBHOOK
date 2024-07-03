@@ -6,6 +6,8 @@ local SendLog = function(Link, D)
 
         -- Remove the "Earned: " prefix from D[4]
         local earnedValue = tostring(D[4]):gsub("Earned: ", "")
+        local bountyValue = tostring(D[5]):gsub("Bounty: ", "")
+        local bountyEarnedValue = tostring(D[6]):gsub("Bounty Earned: ", "")
 
         local Data = {
             ["content"] = "",
@@ -41,7 +43,22 @@ local SendLog = function(Link, D)
                     },
                     {
                         ["name"] = ":alarm_clock: Timer",
-                        ["value"] = D[5],
+                        ["value"] = D[7],
+                        ["inline"] = true
+                    },
+                    {
+                        ["name"] = ":dart: Bounty",
+                        ["value"] = bountyValue,
+                        ["inline"] = true
+                    },
+                    {
+                        ["name"] = ":dart: Bounty Earned",
+                        ["value"] = bountyEarnedValue,
+                        ["inline"] = true
+                    },
+                    {
+                        ["name"] = ":link: Server",
+                        ["value"] = ".gg/altcontrol,
                         ["inline"] = true
                     },
                 },
