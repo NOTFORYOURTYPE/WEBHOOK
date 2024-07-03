@@ -1,5 +1,6 @@
 local SendLog = function(Link, D)
-    local Link = getgenv().DiscordWebhook
+    -- Use the global Link if not provided
+    Link = Link or getgenv().DiscordWebhook
 
     if (Link ~= "") then 
         -- warn("sending webhook")
@@ -60,25 +61,29 @@ local SendLog = function(Link, D)
                         ["name"] = ":link: Server",
                         ["value"] = ".gg/altcontrol",
                         ["inline"] = true
-                    },
+                    }
                 },
                 ["image"] = {
                     ["url"] = "https://i.imgur.com/nXGxQ8N.gif"
                 },
                 ["thumbnail"] = {
                     ["url"] = "https://i.imgur.com/aLQCMew.png"
-                },
+                }
             }}
         }
         
         local s, e = pcall(function()
             local http_request = http_request or (syn and syn.request)
-            http_request({
-                Url = Link,
-                Body = game:GetService("HttpService"):JSONEncode(Data),
-                Method = "POST",
-                Headers = {["content-type"] = "application/json"}
-            })
+            if http_request then
+                http_request({
+                    Url = Link,
+                    Body = game:GetService("HttpService"):JSONEncode(Data),
+                    Method = "POST",
+                    Headers = {["content-type"] = "application/json"}
+                })
+            else
+                error("http_request function not available")
+            end
         end)
 
         if not s then
