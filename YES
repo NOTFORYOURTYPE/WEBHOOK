@@ -58,7 +58,7 @@ local SendLog = function(Link, D)
                     },
                     {
                         ["name"] = ":link: Server",
-                        ["value"] = ".gg/altcontrol,
+                        ["value"] = ".gg/altcontrol",
                         ["inline"] = true
                     },
                 },
